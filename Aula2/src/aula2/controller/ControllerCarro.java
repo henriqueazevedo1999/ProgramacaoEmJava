@@ -1,5 +1,6 @@
 package aula2.controller;
 
+import aula2.models.DAOCarro;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,8 +10,10 @@ public class ControllerCarro
     
     public boolean Salvar(Carro carro)
     {
+        
         lista.add(carro);
-        return true;
+        
+        return DAOCarro.Salvar(carro);
     }
     
     public List<Carro> GetCarros()
