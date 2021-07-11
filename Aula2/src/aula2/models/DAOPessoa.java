@@ -1,21 +1,20 @@
 package aula2.models;
 
-import aula2.controller.Carro;
+import aula2.controller.Pessoa;
 import aula2.utils.ConectaDB;
 import java.sql.Connection;
-import java.util.ArrayList;
-import java.util.List;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class DAOCarro implements ICrud<Carro>
+public class DAOPessoa implements ICrud<Pessoa>
 {
-    private static String table = "carro";
+    private static String table = "pessoa";
     
-    @Override
-    public boolean Salvar(Carro carro)
+    public boolean Salvar(Pessoa pessoa)
     {
         Connection connection = ConectaDB.GetConexao();
         String sql = "insert into ? (placa, marca, modelo, cor)";
@@ -41,9 +40,10 @@ public class DAOCarro implements ICrud<Carro>
     }
     
     @Override
-    public List<Carro> Ler()
+    public List<Pessoa> Ler()
     {
-        List<Carro> lista = new ArrayList<>();
+        List<Pessoa> lista = new ArrayList<>();
         return null;
     }
+}
 }
