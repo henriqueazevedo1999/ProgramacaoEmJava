@@ -121,9 +121,7 @@ public class CadastroProduto extends javax.swing.JFrame {
         jcCadastroProdutoCategoria.removeAllItems();
         jcCadastroProdutoCategoria.addItem("Selecione a categoria");
         for (Categoria categoria : DAOCategoria.getCategorias())
-        {
             jcCadastroProdutoCategoria.addItem(categoria.getDescricao());
-        }
     }//GEN-LAST:event_formWindowOpened
 
     private void jbCadastroProdutoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastroProdutoSalvarActionPerformed
@@ -144,9 +142,7 @@ public class CadastroProduto extends javax.swing.JFrame {
                 LimpaCampos();
             }
             else
-            {
                JOptionPane.showMessageDialog(rootPane, "Erro ao salvar produto."); 
-            }
         }
     }//GEN-LAST:event_jbCadastroProdutoSalvarActionPerformed
 

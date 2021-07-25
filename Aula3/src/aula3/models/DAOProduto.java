@@ -1,5 +1,6 @@
 package aula3.models;
 
+import aula3.controller.FiltroProduto;
 import aula3.controller.Produto;
 import aula3.utils.ConectaDB;
 import java.sql.Connection;
@@ -11,16 +12,28 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class DAOProduto// implements ICrud<Carro>
+public class DAOProduto
 {
-    public static List<Produto> getProdutos()
+    public static List<Produto> getProdutos(FiltroProduto filtroProduto)
     {
         List<Produto> produtos = new ArrayList<>();
         ResultSet rs = null;
         try 
         {
+            String sql;
             Connection connection = ConectaDB.getConexao();
-            String sql = "select * from produto";
+            if (filtroProduto.getCategoria() == null)
+            {
+                sql = "select * from produto "
+                    + "where descricao ILIKE '%" + filtroProduto.getDescricao() + "%'";
+            }
+            else
+            {
+                sql = "select * from produto "
+                    + "where descricao ILIKE '%" + filtroProduto.getDescricao() + "%'"
+                    + "and idcategoria ILIKE '%" + filtroProduto.getCategoria().getId() + "%'";
+            }
+            
             PreparedStatement statement = connection.prepareStatement(sql);
             rs = statement.executeQuery();
             while (rs.next())

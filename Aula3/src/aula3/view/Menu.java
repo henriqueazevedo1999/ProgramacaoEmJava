@@ -4,6 +4,9 @@ public class Menu extends javax.swing.JFrame {
 
     CadastroProduto cadastroProduto;
     CadastroCategoria cadastroCategoria;
+    CadastroCliente cadastroCliente;
+    ConsultaProdutos consultaProdutos;
+    ConsultaClientes consultaClientes;
     
     public Menu() {
         initComponents();
@@ -13,18 +16,23 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemCadastroProduto = new javax.swing.JMenuItem();
         jMenuItemCadastroCategoria = new javax.swing.JMenuItem();
+        jMenuCadastrosCliente = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuConsultasProduto = new javax.swing.JMenuItem();
         jMenuConsultasCategoria = new javax.swing.JMenuItem();
+        jMenuConsultasCliente = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro de vendas");
@@ -46,6 +54,14 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItemCadastroCategoria);
+
+        jMenuCadastrosCliente.setText("Cliente");
+        jMenuCadastrosCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCadastrosClienteActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuCadastrosCliente);
         jMenu1.add(jSeparator1);
 
         jMenuItem3.setText("Sair");
@@ -65,6 +81,14 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuConsultasCategoria.setText("Categoria");
         jMenu2.add(jMenuConsultasCategoria);
+
+        jMenuConsultasCliente.setText("Cliente");
+        jMenuConsultasCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuConsultasClienteActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuConsultasCliente);
         jMenu2.add(jSeparator2);
 
         jMenuItem6.setText("Sair");
@@ -93,25 +117,38 @@ public class Menu extends javax.swing.JFrame {
 
     private void jMenuItemCadastroProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadastroProdutoActionPerformed
         if (cadastroProduto == null)
-            new CadastroProduto();
+            cadastroProduto = new CadastroProduto();
         
         cadastroProduto.setVisible(true);
     }//GEN-LAST:event_jMenuItemCadastroProdutoActionPerformed
 
     private void jMenuItemCadastroCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadastroCategoriaActionPerformed
         if (cadastroCategoria == null)
-            new CadastroCategoria();
+            cadastroCategoria = new CadastroCategoria();
         
         cadastroCategoria.setVisible(true);
     }//GEN-LAST:event_jMenuItemCadastroCategoriaActionPerformed
 
     private void jMenuConsultasProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultasProdutoActionPerformed
-       new ConsultaProdutos().setVisible(true);
+        if (consultaProdutos == null)
+            consultaProdutos = new ConsultaProdutos();
         
-        
-        
-        
+        consultaProdutos.setVisible(true);
     }//GEN-LAST:event_jMenuConsultasProdutoActionPerformed
+
+    private void jMenuCadastrosClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCadastrosClienteActionPerformed
+        if (cadastroCliente == null)
+            cadastroCliente = new CadastroCliente();
+             
+        cadastroCliente.setVisible(true);
+    }//GEN-LAST:event_jMenuCadastrosClienteActionPerformed
+
+    private void jMenuConsultasClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultasClienteActionPerformed
+        if (consultaClientes == null)
+            consultaClientes = new ConsultaClientes();
+        
+        consultaClientes.setVisible(true);
+    }//GEN-LAST:event_jMenuConsultasClienteActionPerformed
 
     public static void main(String args[]) {
 
@@ -127,8 +164,11 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuCadastrosCliente;
     private javax.swing.JMenuItem jMenuConsultasCategoria;
+    private javax.swing.JMenuItem jMenuConsultasCliente;
     private javax.swing.JMenuItem jMenuConsultasProduto;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItemCadastroCategoria;
