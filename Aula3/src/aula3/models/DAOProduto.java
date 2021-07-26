@@ -45,7 +45,7 @@ public class DAOProduto
                 
                 int idxCategoria = rs.getInt("idcategoria");
                 
-                produto.setCategoria(DAOCategoria.getCategorias().get(idxCategoria));
+                produto.setCategoria(DAOCategoria.getCategorias().get(idxCategoria - 1));
                 produtos.add(produto);
             }
         } 

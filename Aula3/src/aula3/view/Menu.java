@@ -26,7 +26,6 @@ public class Menu extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuConsultasProduto = new javax.swing.JMenuItem();
-        jMenuConsultasCategoria = new javax.swing.JMenuItem();
         jMenuConsultasCliente = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenuItem6 = new javax.swing.JMenuItem();
@@ -78,9 +77,6 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuConsultasProduto);
-
-        jMenuConsultasCategoria.setText("Categoria");
-        jMenu2.add(jMenuConsultasCategoria);
 
         jMenuConsultasCliente.setText("Cliente");
         jMenuConsultasCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -165,7 +161,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuCadastrosCliente;
-    private javax.swing.JMenuItem jMenuConsultasCategoria;
     private javax.swing.JMenuItem jMenuConsultasCliente;
     private javax.swing.JMenuItem jMenuConsultasProduto;
     private javax.swing.JMenuItem jMenuItem1;

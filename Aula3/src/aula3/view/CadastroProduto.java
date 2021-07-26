@@ -118,10 +118,7 @@ public class CadastroProduto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        jcCadastroProdutoCategoria.removeAllItems();
-        jcCadastroProdutoCategoria.addItem("Selecione a categoria");
-        for (Categoria categoria : DAOCategoria.getCategorias())
-            jcCadastroProdutoCategoria.addItem(categoria.getDescricao());
+        preencheCategorias();
     }//GEN-LAST:event_formWindowOpened
 
     private void jbCadastroProdutoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastroProdutoSalvarActionPerformed
@@ -146,6 +143,14 @@ public class CadastroProduto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jbCadastroProdutoSalvarActionPerformed
 
+    private void preencheCategorias()
+    {
+        jcCadastroProdutoCategoria.removeAllItems();
+        jcCadastroProdutoCategoria.addItem("Selecione a categoria");
+        for (Categoria categoria : DAOCategoria.getCategorias())
+            jcCadastroProdutoCategoria.addItem(categoria.getDescricao());
+    }
+    
     private void jbCadastroProdutoLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastroProdutoLimparActionPerformed
         LimpaCampos();
     }//GEN-LAST:event_jbCadastroProdutoLimparActionPerformed

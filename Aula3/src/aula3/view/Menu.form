@@ -60,11 +60,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuConsultasProdutoActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuConsultasCategoria">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Categoria"/>
-              </Properties>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuConsultasCliente">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cliente"/>
