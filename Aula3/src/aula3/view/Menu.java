@@ -165,13 +165,6 @@ public class Menu extends javax.swing.JFrame {
         consultaCategorias.setVisible(true);
     }//GEN-LAST:event_jConsultaCategoriaActionPerformed
 
-    private void abreTela(JFrame tela)
-    {
-        if (tela == null)
-            tela = new JFrame; //TODO
-        
-        tela.setVisible(true);
-    }
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
