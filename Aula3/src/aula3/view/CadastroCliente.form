@@ -24,7 +24,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jLabel1" alignment="1" max="32767" attributes="0"/>
+          <Component id="jlTitulo" alignment="1" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -32,7 +32,7 @@
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jtEmail" alignment="1" min="-2" pref="219" max="-2" attributes="0"/>
                           <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                              <Component id="jbFone" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jlFone" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jlCPF" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jtCPF" alignment="0" min="-2" pref="173" max="-2" attributes="0"/>
                               <Component id="jlNome" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -42,11 +42,11 @@
                                           <Component id="jtNome" alignment="0" pref="288" max="32767" attributes="0"/>
                                           <Component id="jtRua" alignment="0" max="32767" attributes="0"/>
                                       </Group>
-                                      <Component id="jbRua" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jlRua" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jbNumero" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jlNumero" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jtNumero" alignment="0" min="-2" pref="67" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -60,29 +60,29 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jtCidade" alignment="0" min="-2" pref="288" max="-2" attributes="0"/>
-                                      <Component id="jbCidade" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jlCidade" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jbUF" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jlUF" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jcUF" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jtBairro" alignment="0" min="-2" pref="288" max="-2" attributes="0"/>
-                                      <Component id="jbBairro" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jlBairro" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jbCEP" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jlCEP" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jtCEP" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jtFone" min="-2" pref="136" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jbEmail" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jlEmail" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -102,7 +102,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <Component id="jlTitulo" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jlNome" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -114,12 +114,12 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="jtCPF" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jbFone" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlFone" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jtFone" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jbEmail" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlEmail" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jtEmail" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -128,8 +128,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jbRua" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jbNumero" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlRua" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlNumero" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -137,12 +137,12 @@
                           <Component id="jtNumero" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jbBairro" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlBairro" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jtBairro" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jbCEP" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlCEP" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jtCEP" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -150,7 +150,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jbCidade" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlCidade" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jtCidade" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -158,16 +158,16 @@
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jbUF" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlUF" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jbSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jbLimpar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="18" max="32767" attributes="0"/>
+              <EmptySpace pref="25" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -175,12 +175,12 @@
   <SubComponents>
     <Component class="javax.swing.JTextField" name="jtCidade">
     </Component>
-    <Component class="javax.swing.JLabel" name="jbCidade">
+    <Component class="javax.swing.JLabel" name="jlCidade">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cidade"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jbUF">
+    <Component class="javax.swing.JLabel" name="jlUF">
       <Properties>
         <Property name="text" type="java.lang.String" value="UF"/>
       </Properties>
@@ -219,7 +219,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jtCPF">
     </Component>
-    <Component class="javax.swing.JLabel" name="jbFone">
+    <Component class="javax.swing.JLabel" name="jlFone">
       <Properties>
         <Property name="text" type="java.lang.String" value="Fone"/>
       </Properties>
@@ -236,19 +236,19 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jtEmail">
     </Component>
-    <Component class="javax.swing.JLabel" name="jbEmail">
+    <Component class="javax.swing.JLabel" name="jlEmail">
       <Properties>
         <Property name="text" type="java.lang.String" value="Email"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jtRua">
     </Component>
-    <Component class="javax.swing.JLabel" name="jbRua">
+    <Component class="javax.swing.JLabel" name="jlRua">
       <Properties>
         <Property name="text" type="java.lang.String" value="Rua"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jbNumero">
+    <Component class="javax.swing.JLabel" name="jlNumero">
       <Properties>
         <Property name="text" type="java.lang.String" value="N&#xfa;mero"/>
       </Properties>
@@ -257,19 +257,19 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jtBairro">
     </Component>
-    <Component class="javax.swing.JLabel" name="jbBairro">
+    <Component class="javax.swing.JLabel" name="jlBairro">
       <Properties>
         <Property name="text" type="java.lang.String" value="Bairro"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jbCEP">
+    <Component class="javax.swing.JLabel" name="jlCEP">
       <Properties>
         <Property name="text" type="java.lang.String" value="CEP"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jtCEP">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="jlTitulo">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="18" style="1"/>

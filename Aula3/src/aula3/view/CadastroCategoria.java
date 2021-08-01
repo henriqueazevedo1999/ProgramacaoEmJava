@@ -14,20 +14,20 @@ public class CadastroCategoria extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jtCadastroCategoriaDescricao = new javax.swing.JTextField();
+        jlTitulo = new javax.swing.JLabel();
+        jlDescricao = new javax.swing.JLabel();
+        jtDescricao = new javax.swing.JTextField();
         jbCadastroCategoriaSalvar = new javax.swing.JButton();
-        jbCadastroCategoriaSalvar1 = new javax.swing.JButton();
+        jbCadastroCategoriaLimpar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Categoria");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Cadastro de Categoria");
+        jlTitulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jlTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlTitulo.setText("Cadastro de Categoria");
 
-        jLabel2.setText("Descrição:");
+        jlDescricao.setText("Descrição:");
 
         jbCadastroCategoriaSalvar.setText("Salvar");
         jbCadastroCategoriaSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -36,10 +36,10 @@ public class CadastroCategoria extends javax.swing.JFrame {
             }
         });
 
-        jbCadastroCategoriaSalvar1.setText("Limpa");
-        jbCadastroCategoriaSalvar1.addActionListener(new java.awt.event.ActionListener() {
+        jbCadastroCategoriaLimpar.setText("Limpar");
+        jbCadastroCategoriaLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbCadastroCategoriaSalvar1ActionPerformed(evt);
+                jbCadastroCategoriaLimparActionPerformed(evt);
             }
         });
 
@@ -47,57 +47,56 @@ public class CadastroCategoria extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jlTitulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
+                    .addComponent(jlDescricao)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jbCadastroCategoriaSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jbCadastroCategoriaSalvar1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jtCadastroCategoriaDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jbCadastroCategoriaLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(jlTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
+                .addComponent(jlDescricao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtCadastroCategoriaDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbCadastroCategoriaSalvar)
-                    .addComponent(jbCadastroCategoriaSalvar1))
+                    .addComponent(jbCadastroCategoriaLimpar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbCadastroCategoriaSalvar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastroCategoriaSalvar1ActionPerformed
+    private void jbCadastroCategoriaLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastroCategoriaLimparActionPerformed
         limpaCampos();
-    }//GEN-LAST:event_jbCadastroCategoriaSalvar1ActionPerformed
+    }//GEN-LAST:event_jbCadastroCategoriaLimparActionPerformed
 
     private void jbCadastroCategoriaSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastroCategoriaSalvarActionPerformed
         if (verificaCampos())
         {
-            Categoria categoria = new Categoria(0);
-            categoria.setDescricao(jtCadastroCategoriaDescricao.getText());
+            Categoria categoria = new Categoria(jtDescricao.getText());
             
-            if (DAOCategoria.salvar(categoria))
+            DAOCategoria daoCategoria = new DAOCategoria();
+            
+            if (daoCategoria.save(categoria))
             {
                 JOptionPane.showMessageDialog(rootPane, "Categoria salva com sucesso!");
                 limpaCampos();
             }
             else
-            {
                 JOptionPane.showMessageDialog(rootPane, "Erro ao salvar categoria.");
-            }
         }
     }//GEN-LAST:event_jbCadastroCategoriaSalvarActionPerformed
 
@@ -138,23 +137,23 @@ public class CadastroCategoria extends javax.swing.JFrame {
 
     private void limpaCampos()
     {
-        jtCadastroCategoriaDescricao.setText("");
+        jtDescricao.setText("");
     }
     
     private boolean verificaCampos()
     {
-        if (jtCadastroCategoriaDescricao.getText().isEmpty())
+        if (jtDescricao.getText().isEmpty())
         {
-            jtCadastroCategoriaDescricao.requestFocus();
+            jtDescricao.requestFocus();
             JOptionPane.showMessageDialog(rootPane, "Necessário informar descrição");
         }
         return true;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton jbCadastroCategoriaLimpar;
     private javax.swing.JButton jbCadastroCategoriaSalvar;
-    private javax.swing.JButton jbCadastroCategoriaSalvar1;
-    private javax.swing.JTextField jtCadastroCategoriaDescricao;
+    private javax.swing.JLabel jlDescricao;
+    private javax.swing.JLabel jlTitulo;
+    private javax.swing.JTextField jtDescricao;
     // End of variables declaration//GEN-END:variables
 }

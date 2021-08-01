@@ -3,7 +3,6 @@ package aula3.models;
 import aula3.controller.Cliente;
 import aula3.controller.Contato;
 import aula3.controller.Endereco;
-import aula3.controller.Estados;
 import aula3.controller.FiltroCliente;
 import aula3.utils.ConectaDB;
 import java.sql.Connection;
@@ -14,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 public class DAOCliente
 {

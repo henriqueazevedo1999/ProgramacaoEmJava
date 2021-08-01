@@ -1,5 +1,6 @@
 package aula3.view;
 import aula3.controller.Categoria;
+import aula3.controller.FiltroCategoria;
 import aula3.controller.Produto;
 import aula3.models.DAOCategoria;
 import aula3.models.DAOProduto;
@@ -15,17 +16,17 @@ public class CadastroProduto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jtCadastroProdutoDescricao = new javax.swing.JTextField();
-        jlCadastroProdutoDescricao = new javax.swing.JLabel();
-        jlCadastroProdutoPreco = new javax.swing.JLabel();
-        jtCadastroProdutoPreco = new javax.swing.JTextField();
-        jlCadastroProdutoEstoque = new javax.swing.JLabel();
-        jtCadastroProdutoEstoque = new javax.swing.JTextField();
-        jlCadastroProdutoCategoria = new javax.swing.JLabel();
-        jcCadastroProdutoCategoria = new javax.swing.JComboBox<>();
-        jbCadastroProdutoSalvar = new javax.swing.JButton();
-        jbCadastroProdutoLimpar = new javax.swing.JButton();
+        jlTitulo = new javax.swing.JLabel();
+        jtDescricao = new javax.swing.JTextField();
+        jlDescricao = new javax.swing.JLabel();
+        jlPreco = new javax.swing.JLabel();
+        jtPreco = new javax.swing.JTextField();
+        jlEstoque = new javax.swing.JLabel();
+        jtEstoque = new javax.swing.JTextField();
+        jlCategoria = new javax.swing.JLabel();
+        jcCategoria = new javax.swing.JComboBox<>();
+        jbSalvar = new javax.swing.JButton();
+        jbLimpar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de produtos");
@@ -35,31 +36,31 @@ public class CadastroProduto extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Cadastro de Produtos");
+        jlTitulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jlTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlTitulo.setText("Cadastro de Produtos");
 
-        jlCadastroProdutoDescricao.setText("Descrição");
+        jlDescricao.setText("Descrição");
 
-        jlCadastroProdutoPreco.setText("Preço");
+        jlPreco.setText("Preço");
 
-        jlCadastroProdutoEstoque.setText("Estoque");
+        jlEstoque.setText("Estoque");
 
-        jlCadastroProdutoCategoria.setText("Categoria");
+        jlCategoria.setText("Categoria");
 
-        jcCadastroProdutoCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione a categoria" }));
+        jcCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione a categoria" }));
 
-        jbCadastroProdutoSalvar.setText("Salvar");
-        jbCadastroProdutoSalvar.addActionListener(new java.awt.event.ActionListener() {
+        jbSalvar.setText("Salvar");
+        jbSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbCadastroProdutoSalvarActionPerformed(evt);
+                jbSalvarActionPerformed(evt);
             }
         });
 
-        jbCadastroProdutoLimpar.setText("Limpar");
-        jbCadastroProdutoLimpar.addActionListener(new java.awt.event.ActionListener() {
+        jbLimpar.setText("Limpar");
+        jbLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbCadastroProdutoLimparActionPerformed(evt);
+                jbLimparActionPerformed(evt);
             }
         });
 
@@ -67,50 +68,50 @@ public class CadastroProduto extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jlTitulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlCadastroProdutoCategoria)
-                    .addComponent(jlCadastroProdutoEstoque)
-                    .addComponent(jlCadastroProdutoPreco)
-                    .addComponent(jtCadastroProdutoPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlCadastroProdutoDescricao)
-                    .addComponent(jtCadastroProdutoDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlCategoria)
+                    .addComponent(jlEstoque)
+                    .addComponent(jlPreco)
+                    .addComponent(jtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlDescricao)
+                    .addComponent(jtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jbCadastroProdutoSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jbCadastroProdutoLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jbLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jcCadastroProdutoCategoria, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jtCadastroProdutoEstoque, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)))
+                        .addComponent(jcCategoria, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jtEstoque, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jLabel1)
+                .addComponent(jlTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jlCadastroProdutoDescricao)
+                .addComponent(jlDescricao)
                 .addGap(4, 4, 4)
-                .addComponent(jtCadastroProdutoDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jlCadastroProdutoPreco)
+                .addComponent(jlPreco)
                 .addGap(4, 4, 4)
-                .addComponent(jtCadastroProdutoPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jlCadastroProdutoEstoque)
+                .addComponent(jlEstoque)
                 .addGap(4, 4, 4)
-                .addComponent(jtCadastroProdutoEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jlCadastroProdutoCategoria)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jcCadastroProdutoCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jlCategoria)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jcCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbCadastroProdutoSalvar)
-                    .addComponent(jbCadastroProdutoLimpar))
+                    .addComponent(jbSalvar)
+                    .addComponent(jbLimpar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -121,16 +122,18 @@ public class CadastroProduto extends javax.swing.JFrame {
         preencheCategorias();
     }//GEN-LAST:event_formWindowOpened
 
-    private void jbCadastroProdutoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastroProdutoSalvarActionPerformed
+    private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
         if (VerificaCampos())
         {
             Produto produto = new Produto(0);
 
-            produto.setDescricao(jtCadastroProdutoDescricao.getText());
-            produto.setPreco(Float.parseFloat(jtCadastroProdutoPreco.getText()));
-            produto.setEstoque(Float.parseFloat(jtCadastroProdutoEstoque.getText()));
+            produto.setDescricao(jtDescricao.getText());
+            produto.setPreco(Float.parseFloat(jtPreco.getText()));
+            produto.setEstoque(Float.parseFloat(jtEstoque.getText()));
             
-            Categoria categoria = new Categoria(jcCadastroProdutoCategoria.getSelectedIndex());
+            Categoria categoria = new Categoria();
+            
+            categoria.setId(jcCategoria.getSelectedIndex());
             produto.setCategoria(categoria);
             
             if (DAOProduto.salvar(produto))
@@ -141,19 +144,21 @@ public class CadastroProduto extends javax.swing.JFrame {
             else
                JOptionPane.showMessageDialog(rootPane, "Erro ao salvar produto."); 
         }
-    }//GEN-LAST:event_jbCadastroProdutoSalvarActionPerformed
+    }//GEN-LAST:event_jbSalvarActionPerformed
 
     private void preencheCategorias()
     {
-        jcCadastroProdutoCategoria.removeAllItems();
-        jcCadastroProdutoCategoria.addItem("Selecione a categoria");
-        for (Categoria categoria : DAOCategoria.getCategorias())
-            jcCadastroProdutoCategoria.addItem(categoria.getDescricao());
+        jcCategoria.removeAllItems();
+        jcCategoria.addItem("Selecione a categoria");
+        
+        DAOCategoria daoCategoria = new DAOCategoria();
+        for (Categoria categoria : daoCategoria.findAll())
+            jcCategoria.addItem(categoria.getDescricao());
     }
     
-    private void jbCadastroProdutoLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastroProdutoLimparActionPerformed
+    private void jbLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimparActionPerformed
         LimpaCampos();
-    }//GEN-LAST:event_jbCadastroProdutoLimparActionPerformed
+    }//GEN-LAST:event_jbLimparActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -189,46 +194,46 @@ public class CadastroProduto extends javax.swing.JFrame {
 
     private boolean VerificaCampos()
     {
-        if (jtCadastroProdutoDescricao.getText().isEmpty())
+        if (jtDescricao.getText().isEmpty())
         {
-            jtCadastroProdutoDescricao.requestFocus();
+            jtDescricao.requestFocus();
             JOptionPane.showMessageDialog(rootPane, "Necessário informar descrição!");
             return false;
         }
         
         try {
-            Float.parseFloat(jtCadastroProdutoPreco.getText());
+            Float.parseFloat(jtPreco.getText());
         } catch (NumberFormatException e) {
-            jtCadastroProdutoPreco.requestFocus();
+            jtPreco.requestFocus();
             JOptionPane.showMessageDialog(rootPane, "Necessário informar preço!");
             return false;
         }
         
-        if (Float.parseFloat(jtCadastroProdutoPreco.getText()) <= 0)
+        if (Float.parseFloat(jtPreco.getText()) <= 0)
         {
-            jtCadastroProdutoPreco.requestFocus();
+            jtPreco.requestFocus();
             JOptionPane.showMessageDialog(rootPane, "Necessário informar preço!");
             return false;
         }
         
         try {
-            Float.parseFloat(jtCadastroProdutoEstoque.getText());
+            Float.parseFloat(jtEstoque.getText());
         } catch (NumberFormatException e) {
-            jtCadastroProdutoEstoque.requestFocus();
+            jtEstoque.requestFocus();
             JOptionPane.showMessageDialog(rootPane, "Necessário informar estoque!");
             return false;
         }
         
-        if (Float.parseFloat(jtCadastroProdutoEstoque.getText()) <= 0)
+        if (Float.parseFloat(jtEstoque.getText()) <= 0)
         {
-            jtCadastroProdutoEstoque.requestFocus();
+            jtEstoque.requestFocus();
             JOptionPane.showMessageDialog(rootPane, "Necessário informar estoque!");
             return false;
         }
         
-        if (jcCadastroProdutoCategoria.getSelectedIndex() == 0)
+        if (jcCategoria.getSelectedIndex() == 0)
         {
-            jcCadastroProdutoCategoria.requestFocus();
+            jcCategoria.requestFocus();
             JOptionPane.showMessageDialog(rootPane, "Necessário selecionar a categoria!");
             return false;
         }
@@ -237,23 +242,23 @@ public class CadastroProduto extends javax.swing.JFrame {
     
     private void LimpaCampos()
     {
-        jtCadastroProdutoDescricao.setText("");
-        jtCadastroProdutoPreco.setText("");
-        jtCadastroProdutoEstoque.setText("");
-        jcCadastroProdutoCategoria.setSelectedIndex(0);
+        jtDescricao.setText("");
+        jtPreco.setText("");
+        jtEstoque.setText("");
+        jcCategoria.setSelectedIndex(0);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton jbCadastroProdutoLimpar;
-    private javax.swing.JButton jbCadastroProdutoSalvar;
-    private javax.swing.JComboBox<String> jcCadastroProdutoCategoria;
-    private javax.swing.JLabel jlCadastroProdutoCategoria;
-    private javax.swing.JLabel jlCadastroProdutoDescricao;
-    private javax.swing.JLabel jlCadastroProdutoEstoque;
-    private javax.swing.JLabel jlCadastroProdutoPreco;
-    private javax.swing.JTextField jtCadastroProdutoDescricao;
-    private javax.swing.JTextField jtCadastroProdutoEstoque;
-    private javax.swing.JTextField jtCadastroProdutoPreco;
+    private javax.swing.JButton jbLimpar;
+    private javax.swing.JButton jbSalvar;
+    private javax.swing.JComboBox<String> jcCategoria;
+    private javax.swing.JLabel jlCategoria;
+    private javax.swing.JLabel jlDescricao;
+    private javax.swing.JLabel jlEstoque;
+    private javax.swing.JLabel jlPreco;
+    private javax.swing.JLabel jlTitulo;
+    private javax.swing.JTextField jtDescricao;
+    private javax.swing.JTextField jtEstoque;
+    private javax.swing.JTextField jtPreco;
     // End of variables declaration//GEN-END:variables
 }

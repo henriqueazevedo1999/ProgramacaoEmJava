@@ -36,6 +36,8 @@ public class DAOProduto
             
             PreparedStatement statement = connection.prepareStatement(sql);
             rs = statement.executeQuery();
+            
+            DAOCategoria daoCategoria = new DAOCategoria();
             while (rs.next())
             {
                 Produto produto = new Produto(rs.getInt("id"));
@@ -45,7 +47,7 @@ public class DAOProduto
                 
                 int idxCategoria = rs.getInt("idcategoria");
                 
-                produto.setCategoria(DAOCategoria.getCategorias().get(idxCategoria - 1));
+                produto.setCategoria(daoCategoria.findAll().get(idxCategoria - 1));
                 produtos.add(produto);
             }
         } 

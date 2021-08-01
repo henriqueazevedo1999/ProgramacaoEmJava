@@ -4,7 +4,6 @@ import aula3.controller.FiltroProduto;
 import aula3.controller.Produto;
 import aula3.models.DAOProduto;
 import javax.swing.table.DefaultTableModel;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ConsultaProdutos extends javax.swing.JFrame {
@@ -106,7 +105,7 @@ public class ConsultaProdutos extends javax.swing.JFrame {
         
         modelo.setNumRows(0);
         
-        List<Produto> produtos = new ArrayList<>();
+        List<Produto> produtos;
         FiltroProduto filtroProduto = new FiltroProduto();
         filtroProduto.setDescricao(jtConsultaProdutoDescricaoPesquisar.getText());
         

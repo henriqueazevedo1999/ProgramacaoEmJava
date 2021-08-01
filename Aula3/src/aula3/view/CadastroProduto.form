@@ -27,24 +27,24 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jLabel1" alignment="1" max="32767" attributes="0"/>
+          <Component id="jlTitulo" alignment="1" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jlCadastroProdutoCategoria" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jlCadastroProdutoEstoque" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jlCadastroProdutoPreco" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtCadastroProdutoPreco" alignment="0" min="-2" pref="177" max="-2" attributes="0"/>
-                  <Component id="jlCadastroProdutoDescricao" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtCadastroProdutoDescricao" min="-2" pref="177" max="-2" attributes="0"/>
+                  <Component id="jlCategoria" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jlEstoque" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jlPreco" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jtPreco" alignment="0" min="-2" pref="177" max="-2" attributes="0"/>
+                  <Component id="jlDescricao" min="-2" max="-2" attributes="0"/>
+                  <Component id="jtDescricao" min="-2" pref="177" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jbCadastroProdutoSalvar" min="-2" pref="86" max="-2" attributes="0"/>
+                      <Component id="jbSalvar" min="-2" pref="86" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jbCadastroProdutoLimpar" min="-2" pref="86" max="-2" attributes="0"/>
+                      <Component id="jbLimpar" min="-2" pref="86" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="jcCadastroProdutoCategoria" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jtCadastroProdutoEstoque" alignment="0" pref="177" max="32767" attributes="0"/>
+                      <Component id="jcCategoria" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jtEstoque" alignment="0" pref="177" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="22" max="32767" attributes="0"/>
@@ -55,27 +55,27 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <Component id="jlTitulo" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jlCadastroProdutoDescricao" min="-2" max="-2" attributes="0"/>
+              <Component id="jlDescricao" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-              <Component id="jtCadastroProdutoDescricao" min="-2" max="-2" attributes="0"/>
+              <Component id="jtDescricao" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jlCadastroProdutoPreco" min="-2" max="-2" attributes="0"/>
+              <Component id="jlPreco" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-              <Component id="jtCadastroProdutoPreco" min="-2" max="-2" attributes="0"/>
+              <Component id="jtPreco" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jlCadastroProdutoEstoque" min="-2" max="-2" attributes="0"/>
+              <Component id="jlEstoque" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-              <Component id="jtCadastroProdutoEstoque" min="-2" max="-2" attributes="0"/>
+              <Component id="jtEstoque" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jlCadastroProdutoCategoria" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jcCadastroProdutoCategoria" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jlCategoria" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jcCategoria" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jbCadastroProdutoSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jbCadastroProdutoLimpar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jbSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jbLimpar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -83,7 +83,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="jlTitulo">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="18" style="1"/>
@@ -92,33 +92,33 @@
         <Property name="text" type="java.lang.String" value="Cadastro de Produtos"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jtCadastroProdutoDescricao">
+    <Component class="javax.swing.JTextField" name="jtDescricao">
     </Component>
-    <Component class="javax.swing.JLabel" name="jlCadastroProdutoDescricao">
+    <Component class="javax.swing.JLabel" name="jlDescricao">
       <Properties>
         <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jlCadastroProdutoPreco">
+    <Component class="javax.swing.JLabel" name="jlPreco">
       <Properties>
         <Property name="text" type="java.lang.String" value="Pre&#xe7;o"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jtCadastroProdutoPreco">
+    <Component class="javax.swing.JTextField" name="jtPreco">
     </Component>
-    <Component class="javax.swing.JLabel" name="jlCadastroProdutoEstoque">
+    <Component class="javax.swing.JLabel" name="jlEstoque">
       <Properties>
         <Property name="text" type="java.lang.String" value="Estoque"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jtCadastroProdutoEstoque">
+    <Component class="javax.swing.JTextField" name="jtEstoque">
     </Component>
-    <Component class="javax.swing.JLabel" name="jlCadastroProdutoCategoria">
+    <Component class="javax.swing.JLabel" name="jlCategoria">
       <Properties>
         <Property name="text" type="java.lang.String" value="Categoria"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jcCadastroProdutoCategoria">
+    <Component class="javax.swing.JComboBox" name="jcCategoria">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
@@ -130,20 +130,20 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="jbCadastroProdutoSalvar">
+    <Component class="javax.swing.JButton" name="jbSalvar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Salvar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbCadastroProdutoSalvarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbSalvarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jbCadastroProdutoLimpar">
+    <Component class="javax.swing.JButton" name="jbLimpar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Limpar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbCadastroProdutoLimparActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbLimparActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
