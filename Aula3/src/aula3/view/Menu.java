@@ -1,3 +1,7 @@
+//pattern strategy
+//pattern factory
+//implementar classe controller
+
 package aula3.view;
 
 import javax.swing.JFrame;
