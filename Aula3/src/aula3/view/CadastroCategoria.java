@@ -4,9 +4,14 @@ import aula3.controller.Categoria;
 import aula3.models.DAOCategoria;
 import javax.swing.JOptionPane;
 
-public class CadastroCategoria extends javax.swing.JFrame {
-
-    public CadastroCategoria() {
+public class CadastroCategoria extends javax.swing.JFrame implements ICadastro<CadastroCategoria>
+{
+    DAOCategoria dao;
+    private static CadastroCategoria instance = null;
+    
+    public CadastroCategoria()
+    {
+        dao = new DAOCategoria();
         initComponents();
     }
 
@@ -88,9 +93,7 @@ public class CadastroCategoria extends javax.swing.JFrame {
         {
             Categoria categoria = new Categoria(jtDescricao.getText());
             
-            DAOCategoria daoCategoria = new DAOCategoria();
-            
-            if (daoCategoria.save(categoria))
+            if (dao.save(categoria))
             {
                 JOptionPane.showMessageDialog(rootPane, "Categoria salva com sucesso!");
                 limpaCampos();
@@ -100,11 +103,7 @@ public class CadastroCategoria extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jbCadastroCategoriaSalvarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -127,26 +126,37 @@ public class CadastroCategoria extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CadastroCategoria().setVisible(true);
+            public void run()
+            {
+                CadastroCategoria.getInstance().setVisible(true);
             }
         });
     }
 
-    private void limpaCampos()
+    public static CadastroCategoria getInstance()
+    {
+        if(instance == null)
+            instance =  new CadastroCategoria();  
+
+        return instance;
+    }
+    
+    @Override
+    public void limpaCampos()
     {
         jtDescricao.setText("");
     }
     
-    private boolean verificaCampos()
+    @Override
+    public boolean verificaCampos()
     {
-        if (jtDescricao.getText().isEmpty())
+        if (!CadastroUtil.VerificaCampoTexto(jtDescricao))
         {
-            jtDescricao.requestFocus();
-            JOptionPane.showMessageDialog(rootPane, "Necessário informar descrição");
+            JOptionPane.showMessageDialog(rootPane, "Informe a descrição");
+            return false;
         }
+        
         return true;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -4,18 +4,19 @@
 
 package aula3.view;
 
-import javax.swing.JFrame;
-
 public class Menu extends javax.swing.JFrame {
 
     CadastroProduto cadastroProduto;
     CadastroCategoria cadastroCategoria;
     CadastroCliente cadastroCliente;
+    CadastroCarro cadastroCarro;
     ConsultaProdutos consultaProdutos;
     ConsultaClientes consultaClientes;
-    ConsultaCategoria consultaCategorias;
+    ConsultaCategorias consultaCategorias;
+    ConsultaCarros consultaCarros;
     
-    public Menu() {
+    public Menu() 
+    {
         initComponents();
     }
 
@@ -24,22 +25,27 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenuBar1 = new javax.swing.JMenuBar();
         jCadastros = new javax.swing.JMenu();
         jCadastroProduto = new javax.swing.JMenuItem();
         jCadastroCategoria = new javax.swing.JMenuItem();
         jCadastroCliente = new javax.swing.JMenuItem();
+        jCadastroCarro = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jCadastroSair = new javax.swing.JMenuItem();
         jConsultas = new javax.swing.JMenu();
         jConsultaProduto = new javax.swing.JMenuItem();
         jConsultaCategoria = new javax.swing.JMenuItem();
         jConsultaCliente = new javax.swing.JMenuItem();
+        jConsultaCarro = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jConsultaSair = new javax.swing.JMenuItem();
         jSair = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
+
+        jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro de vendas");
@@ -69,6 +75,14 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jCadastros.add(jCadastroCliente);
+
+        jCadastroCarro.setText("Carro");
+        jCadastroCarro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCadastroCarroActionPerformed(evt);
+            }
+        });
+        jCadastros.add(jCadastroCarro);
         jCadastros.add(jSeparator1);
 
         jCadastroSair.setText("Sair");
@@ -101,6 +115,14 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jConsultas.add(jConsultaCliente);
+
+        jConsultaCarro.setText("Carro");
+        jConsultaCarro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jConsultaCarroActionPerformed(evt);
+            }
+        });
+        jConsultas.add(jConsultaCarro);
         jConsultas.add(jSeparator2);
 
         jConsultaSair.setText("Sair");
@@ -128,46 +150,36 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCadastroProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastroProdutoActionPerformed
-        if (cadastroProduto == null)
-            cadastroProduto = new CadastroProduto();
-        
-        cadastroProduto.setVisible(true);
+        CadastroProduto.getInstance().setVisible(true);
     }//GEN-LAST:event_jCadastroProdutoActionPerformed
 
     private void jCadastroCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastroCategoriaActionPerformed
-        if (cadastroCategoria == null)
-            cadastroCategoria = new CadastroCategoria();
-        
-        cadastroCategoria.setVisible(true);
+        CadastroCategoria.getInstance().setVisible(true);
     }//GEN-LAST:event_jCadastroCategoriaActionPerformed
 
     private void jConsultaProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultaProdutoActionPerformed
-        if (consultaProdutos == null)
-            consultaProdutos = new ConsultaProdutos();
-        
-        consultaProdutos.setVisible(true);
+        ConsultaProdutos.getInstance().setVisible(true);
     }//GEN-LAST:event_jConsultaProdutoActionPerformed
 
     private void jCadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastroClienteActionPerformed
-        if (cadastroCliente == null)
-            cadastroCliente = new CadastroCliente();
-             
-        cadastroCliente.setVisible(true);
+        CadastroCliente.getInstance().setVisible(true);
     }//GEN-LAST:event_jCadastroClienteActionPerformed
 
     private void jConsultaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultaClienteActionPerformed
-        if (consultaClientes == null)
-            consultaClientes = new ConsultaClientes();
-        
-        consultaClientes.setVisible(true);
+        ConsultaClientes.getInstance().setVisible(true);
     }//GEN-LAST:event_jConsultaClienteActionPerformed
 
     private void jConsultaCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultaCategoriaActionPerformed
-        if (consultaCategorias == null)
-            consultaCategorias = new ConsultaCategoria();
-        
-        consultaCategorias.setVisible(true);
+        ConsultaCategorias.getInstance().setVisible(true);
     }//GEN-LAST:event_jConsultaCategoriaActionPerformed
+
+    private void jCadastroCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastroCarroActionPerformed
+        CadastroCarro.getInstance().setVisible(true);
+    }//GEN-LAST:event_jCadastroCarroActionPerformed
+
+    private void jConsultaCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultaCarroActionPerformed
+        ConsultaCarros.getInstance().setVisible(true);
+    }//GEN-LAST:event_jConsultaCarroActionPerformed
 
     public static void main(String args[]) {
 
@@ -179,11 +191,13 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem jCadastroCarro;
     private javax.swing.JMenuItem jCadastroCategoria;
     private javax.swing.JMenuItem jCadastroCliente;
     private javax.swing.JMenuItem jCadastroProduto;
     private javax.swing.JMenuItem jCadastroSair;
     private javax.swing.JMenu jCadastros;
+    private javax.swing.JMenuItem jConsultaCarro;
     private javax.swing.JMenuItem jConsultaCategoria;
     private javax.swing.JMenuItem jConsultaCliente;
     private javax.swing.JMenuItem jConsultaProduto;
@@ -191,6 +205,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jConsultas;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenu jSair;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;

@@ -12,18 +12,25 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.List;
 
-public class DAOCategoria implements DAOGenerico<Categoria, FiltroCategoria>
+public class DAOCategoria implements IDAO<Categoria, FiltroCategoria>
 {
+    private Connection connection;
+
+    public DAOCategoria()
+    {
+        connection = ConectaDB.getConexao();
+    }
+    
     @Override
-    public boolean save(Categoria entity) {
+    public boolean save(Categoria categoria)
+    {
         try 
         {
-            Connection connection = ConectaDB.getConexao();
-            String sql = "insert into categoria" +
-                    "(descricao)" +
-                    "values (?)";
+            String sql = "insert into categoria"
+                    + " (descricao)"
+                    + " values (?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, entity.getDescricao());
+            preparedStatement.setString(1, categoria.getDescricao());
             
             preparedStatement.execute();
         }
@@ -36,40 +43,28 @@ public class DAOCategoria implements DAOGenerico<Categoria, FiltroCategoria>
     }
 
     @Override
-    public List<Categoria> findAll() {
-        List<Categoria> categorias = new ArrayList<>();
-        ResultSet rs = null;
-        try 
-        {
-            Connection connection = ConectaDB.getConexao();
-            String sql = "select * from categoria";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            rs = statement.executeQuery();
-            while (rs.next())
-            {
-                Categoria categoria = new Categoria();
-                
-                categoria.setId(rs.getInt("id"));
-                categoria.setDescricao(rs.getString("descricao"));
-                categorias.add(categoria);
-            }
-        } 
-        catch (SQLException ex) 
-        {
-            Logger.getLogger(DAOCategoria.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return categorias;
+    public List<Categoria> findAll() 
+    {
+        String sql = " select * from categoria";
+        return getDataFromDb(sql);
     }
 
     @Override
-    public List<Categoria> findByILike(FiltroCategoria filter) {
+    public List<Categoria> findByILike(FiltroCategoria filter)
+    {
+        String sql = "select * from categoria"
+                + " where descricao ILIKE '%" + filter.getDescricao() + "%'";
+        
+        return getDataFromDb(sql);
+    }
+
+    @Override
+    public List<Categoria> getDataFromDb(String sql)
+    {
         List<Categoria> categorias = new ArrayList<>();
-        ResultSet rs = null;
+        ResultSet rs;
         try 
         {
-            Connection connection = ConectaDB.getConexao();
-            String sql = "select * from categoria "
-                    + "where descricao ILIKE '%" + filter.getDescricao() + "%'";
             PreparedStatement statement = connection.prepareStatement(sql);
             rs = statement.executeQuery();
             while (rs.next())
@@ -87,5 +82,4 @@ public class DAOCategoria implements DAOGenerico<Categoria, FiltroCategoria>
         }
         return categorias;
     }
-
 }

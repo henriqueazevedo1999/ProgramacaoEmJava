@@ -6,9 +6,14 @@ import aula3.models.DAOProduto;
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
 
-public class ConsultaProdutos extends javax.swing.JFrame {
-
-    public ConsultaProdutos() {
+public class ConsultaProdutos extends javax.swing.JFrame
+{
+    DAOProduto dao;
+    private static ConsultaProdutos instance = null;
+    
+    public ConsultaProdutos() 
+    {
+        dao = new DAOProduto();
         initComponents();
     }
 
@@ -109,7 +114,7 @@ public class ConsultaProdutos extends javax.swing.JFrame {
         FiltroProduto filtroProduto = new FiltroProduto();
         filtroProduto.setDescricao(jtConsultaProdutoDescricaoPesquisar.getText());
         
-        produtos = DAOProduto.getProdutos(filtroProduto);
+        produtos = dao.findByILike(filtroProduto);
         
         for (Produto produto : produtos)
         {
@@ -124,11 +129,7 @@ public class ConsultaProdutos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jbConsultaProdutoPesquisarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -151,12 +152,20 @@ public class ConsultaProdutos extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ConsultaProdutos().setVisible(true);
+            public void run() 
+            {
+                ConsultaProdutos.getInstance().setVisible(true);
             }
         });
+    }
+    
+    public static ConsultaProdutos getInstance()
+    {
+        if(instance == null)
+            instance =  new ConsultaProdutos();  
+
+        return instance;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

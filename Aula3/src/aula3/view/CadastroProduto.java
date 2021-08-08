@@ -1,14 +1,18 @@
 package aula3.view;
 import aula3.controller.Categoria;
-import aula3.controller.FiltroCategoria;
 import aula3.controller.Produto;
 import aula3.models.DAOCategoria;
 import aula3.models.DAOProduto;
 import javax.swing.JOptionPane;
 
-public class CadastroProduto extends javax.swing.JFrame {
-
-    public CadastroProduto() {
+public class CadastroProduto extends javax.swing.JFrame
+{
+    DAOProduto dao;
+    private static CadastroProduto instance = null;
+    
+    public CadastroProduto() 
+    {
+        dao = new DAOProduto();
         initComponents();
     }
 
@@ -136,7 +140,7 @@ public class CadastroProduto extends javax.swing.JFrame {
             categoria.setId(jcCategoria.getSelectedIndex());
             produto.setCategoria(categoria);
             
-            if (DAOProduto.salvar(produto))
+            if (dao.save(produto))
             {
                 JOptionPane.showMessageDialog(rootPane, "Produto salvo com sucesso!");
                 LimpaCampos();
@@ -186,57 +190,47 @@ public class CadastroProduto extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CadastroProduto().setVisible(true);
+            public void run() 
+            {
+                CadastroProduto.getInstance().setVisible(true);
             }
         });
+    }
+    
+    public static CadastroProduto getInstance()
+    {
+        if(instance == null)
+            instance =  new CadastroProduto();  
+
+        return instance;
     }
 
     private boolean VerificaCampos()
     {
-        if (jtDescricao.getText().isEmpty())
+        if (!CadastroUtil.VerificaCampoTexto(jtDescricao))
         {
-            jtDescricao.requestFocus();
-            JOptionPane.showMessageDialog(rootPane, "Necessário informar descrição!");
+            JOptionPane.showMessageDialog(rootPane, "Informe a descrição");
             return false;
         }
         
-        try {
-            Float.parseFloat(jtPreco.getText());
-        } catch (NumberFormatException e) {
-            jtPreco.requestFocus();
-            JOptionPane.showMessageDialog(rootPane, "Necessário informar preço!");
-            return false;
-        }
-        
-        if (Float.parseFloat(jtPreco.getText()) <= 0)
+        if (!CadastroUtil.VerificaCampoFloat(jtPreco, true))
         {
-            jtPreco.requestFocus();
-            JOptionPane.showMessageDialog(rootPane, "Necessário informar preço!");
+            JOptionPane.showMessageDialog(rootPane, "Informe o preço");
             return false;
         }
         
-        try {
-            Float.parseFloat(jtEstoque.getText());
-        } catch (NumberFormatException e) {
-            jtEstoque.requestFocus();
-            JOptionPane.showMessageDialog(rootPane, "Necessário informar estoque!");
-            return false;
-        }
-        
-        if (Float.parseFloat(jtEstoque.getText()) <= 0)
+        if (!CadastroUtil.VerificaCampoFloat(jtEstoque, true))
         {
-            jtEstoque.requestFocus();
-            JOptionPane.showMessageDialog(rootPane, "Necessário informar estoque!");
+            JOptionPane.showMessageDialog(rootPane, "Informe o estoque");
             return false;
         }
         
-        if (jcCategoria.getSelectedIndex() == 0)
+        if (!CadastroUtil.VerificaComboBox(jcCategoria))
         {
-            jcCategoria.requestFocus();
-            JOptionPane.showMessageDialog(rootPane, "Necessário selecionar a categoria!");
+            JOptionPane.showMessageDialog(rootPane, "Selecione a categoria");
             return false;
         }
+        
         return true;
     }
     

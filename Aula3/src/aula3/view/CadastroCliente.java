@@ -6,11 +6,16 @@ import aula3.controller.Endereco;
 import aula3.controller.Estados;
 import aula3.models.DAOCliente;
 import javax.swing.JOptionPane;
+import javax.swing;
 
-public class CadastroCliente extends javax.swing.JFrame {
-
+public class CadastroCliente extends javax.swing.JFrame implements ICadastro
+{
+    DAOCliente dao;
+    private static CadastroCliente instance = null;
+    
     public CadastroCliente()
     {
+        dao = new DAOCliente();
         initComponents();
         populaEstados();
     }
@@ -27,7 +32,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         jlNome = new javax.swing.JLabel();
         jtNome = new javax.swing.JTextField();
         jlCPF = new javax.swing.JLabel();
-        jtCPF = new javax.swing.JTextField();
+        jtCPF =  = new JFormattedTextField(new MaskFormatter("###.###.###-##"));
         jlFone = new javax.swing.JLabel();
         jbLimpar = new javax.swing.JButton();
         jtFone = new javax.swing.JTextField();
@@ -114,34 +119,34 @@ public class CadastroCliente extends javax.swing.JFrame {
                                         .addComponent(jtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jlCidade))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jlUF)
-                                        .addComponent(jcUF, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jlBairro))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jlCEP)
-                                        .addComponent(jtCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jtFone, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jlEmail)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(88, 88, 88)
-                                .addComponent(jbSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(62, 62, 62)
-                                .addComponent(jbLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jlCidade))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jlUF)
+                                    .addComponent(jcUF, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jlBairro))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jlCEP)
+                                    .addComponent(jtCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jtFone, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jlEmail)))
                         .addGap(0, 21, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(112, 112, 112)
+                .addComponent(jbSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62)
+                .addComponent(jbLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,11 +200,11 @@ public class CadastroCliente extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jlUF)
                         .addGap(26, 26, 26)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbSalvar)
                     .addComponent(jbLimpar))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
@@ -226,10 +231,10 @@ public class CadastroCliente extends javax.swing.JFrame {
             endereco.setEstado(Estados.values()[jcUF.getSelectedIndex() - 1].name());
             cliente.setEndereco(endereco);
             
-            if (DAOCliente.salvar(cliente))
+            if (dao.save(cliente))
             {
                 JOptionPane.showMessageDialog(rootPane, "Cliente salvo com sucesso!");
-                limparCampos();
+                limpaCampos();
             }
             else
                 JOptionPane.showMessageDialog(rootPane, "Erro ao salvar cliente.");
@@ -239,14 +244,10 @@ public class CadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jbSalvarActionPerformed
 
     private void jbLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimparActionPerformed
-        limparCampos();
+        limpaCampos();
     }//GEN-LAST:event_jbLimparActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -270,15 +271,24 @@ public class CadastroCliente extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CadastroCliente().setVisible(true);
+            public void run() 
+            {
+                CadastroCliente.getInstance().setVisible(true);
             }
         });
     }
     
-    private void limparCampos()
+    public static CadastroCliente getInstance()
+    {
+        if(instance == null)
+            instance =  new CadastroCliente();  
+
+        return instance;
+    }
+    
+    @Override
+    public void limpaCampos()
     {
         jtNome.setText("");
         jtCPF.setText("");
@@ -294,75 +304,71 @@ public class CadastroCliente extends javax.swing.JFrame {
         jcUF.setSelectedIndex(0);
     }
     
-    private boolean verificaCampos()
+    @Override
+    public boolean verificaCampos()
     {
-        if (jtNome.getText().isEmpty())
+        if (!CadastroUtil.VerificaCampoTexto(jtNome))
         {
-            jtNome.requestFocus();
             JOptionPane.showMessageDialog(rootPane, "Informe o nome");
             return false;
         }
-        
-        if (jtCPF.getText().isEmpty())
+         
+        if (!CadastroUtil.VerificaCampoCpf(jtCPF))
         {
-            jtCPF.requestFocus();
-            JOptionPane.showMessageDialog(rootPane, "Informe o CPF");
+            JOptionPane.showMessageDialog(rootPane, "CPF inválido");
             return false;
         }
         
-        if (jtFone.getText().isEmpty())
+        if (!CadastroUtil.VerificaCampoTexto(jtFone))
         {
-            jtFone.requestFocus();
             JOptionPane.showMessageDialog(rootPane, "Informe o telefone");
             return false;
         }
         
-        if (jtEmail.getText().isEmpty())
+        if (!CadastroUtil.VerificaCampoTexto(jtEmail))
         {
-            jtEmail.requestFocus();
             JOptionPane.showMessageDialog(rootPane, "Informe o email");
             return false;
         }
         
-        if (jtRua.getText().isEmpty())
+        if (!CadastroUtil.VerificaCampoTexto(jtRua))
         {
-            jtRua.requestFocus();
             JOptionPane.showMessageDialog(rootPane, "Informe a rua");
             return false;
         }
-
-        try {
-            Integer.parseInt(jtNumero.getText());
-        } catch (NumberFormatException e) {
-            jtNumero.requestFocus();
+        
+        if (!CadastroUtil.VerificaCampoInt(jtNumero))
+        {
             JOptionPane.showMessageDialog(rootPane, "Informe o número da rua");
             return false;
         }
         
-        if (jtBairro.getText().isEmpty())
+        if (!CadastroUtil.VerificaCampoTexto(jtBairro))
         {
-            jtBairro.requestFocus();
             JOptionPane.showMessageDialog(rootPane, "Informe o bairro");
             return false;
         }
         
-        if (jtCEP.getText().isEmpty())
+        if (!CadastroUtil.VerificaCampoTexto(jtCEP))
         {
-            jtCEP.requestFocus();
             JOptionPane.showMessageDialog(rootPane, "Informe o CEP");
             return false;
         }
         
-        if (jtCidade.getText().isEmpty())
+        if (!CadastroUtil.VerificaCampoTexto(jtCidade))
         {
-            jtCidade.requestFocus();
             JOptionPane.showMessageDialog(rootPane, "Informe a cidade");
             return false;
         }
         
-        if (jcUF.getSelectedIndex() <= 0)
+        if (!CadastroUtil.VerificaCampoTexto(jtCEP))
         {
-            jcUF.requestFocus();
+            JOptionPane.showMessageDialog(rootPane, "Informe ");
+            return false;
+        }
+        
+        if (!CadastroUtil.VerificaComboBox(jcUF))
+        {
             JOptionPane.showMessageDialog(rootPane, "Selecione a UF");
             return false;
         }

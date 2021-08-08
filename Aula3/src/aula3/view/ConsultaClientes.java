@@ -9,9 +9,14 @@ import aula3.models.DAOCliente;
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
 
-public class ConsultaClientes extends javax.swing.JFrame {
-
-    public ConsultaClientes() {
+public class ConsultaClientes extends javax.swing.JFrame
+{
+    DAOCliente dao;
+    private static ConsultaClientes instance = null;
+    
+    public ConsultaClientes() 
+    {
+        dao = new DAOCliente();
         initComponents();
         populaEstados();
     }
@@ -257,7 +262,7 @@ public class ConsultaClientes extends javax.swing.JFrame {
 
         filtroCliente.setFiltroEndereco(filtroEndereco);
         
-        clientes = DAOCliente.getClientes(filtroCliente);
+        clientes = dao.findByILike(filtroCliente);
         
         for (Cliente cliente : clientes)
         {
@@ -278,11 +283,7 @@ public class ConsultaClientes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jbPesquisarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -306,12 +307,20 @@ public class ConsultaClientes extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ConsultaClientes().setVisible(true);
+            public void run() 
+            {
+                ConsultaClientes.getInstance().setVisible(true);
             }
         });
+    }
+    
+    public static ConsultaClientes getInstance()
+    {
+        if(instance == null)
+            instance =  new ConsultaClientes();  
+
+        return instance;
     }
 
     private void populaEstados()

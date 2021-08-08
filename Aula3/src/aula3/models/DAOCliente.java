@@ -14,70 +14,23 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class DAOCliente
+public class DAOCliente implements IDAO<Cliente, FiltroCliente>
 {
-    public static List<Cliente> getClientes(FiltroCliente filtroCliente)
+    private Connection connection;
+    
+    public DAOCliente() 
     {
-        List<Cliente> clientes = new ArrayList<>();
-        ResultSet rs = null;
-        try 
-        {
-            String sql;
-            Connection connection = ConectaDB.getConexao();
-            sql = "select * from cliente "
-                + "where nome ILIKE '%" + filtroCliente.getNome()+ "%'"
-                + " and cpf ILIKE '%" + filtroCliente.getCpf() + "%'"
-                + " and fone LIKE '%" + filtroCliente.getFiltroContato().getFone() + "%'"
-                + " and email ILIKE '%" + filtroCliente.getFiltroContato().getEmail()+ "%'"
-                + " and rua ILIKE '%" + filtroCliente.getFiltroEndereco().getRua() + "%'"
-                + " and bairro ILIKE '%" + filtroCliente.getFiltroEndereco().getBairro() + "%'"
-                + " and cep LIKE '%" + filtroCliente.getFiltroEndereco().getCep() + "%'"
-                + " and cidade ILIKE '%" + filtroCliente.getFiltroEndereco().getCidade() + "%'";
-                   
-            if (!filtroCliente.getFiltroEndereco().getEstado().isEmpty())
-                sql += " and uf = '" + filtroCliente.getFiltroEndereco().getEstado() + "'";
-            
-            PreparedStatement statement = connection.prepareStatement(sql);
-            rs = statement.executeQuery();
-            while (rs.next())
-            {
-                Cliente cliente = new Cliente(rs.getInt("id"));
-                Endereco endereco = new Endereco();
-                Contato contato = new Contato();
-                
-                cliente.setNome(rs.getString("nome"));
-                cliente.setCpf(rs.getString("cpf"));
-                
-                contato.setFone(rs.getString("fone"));
-                contato.setEmail(rs.getString("email"));
-                cliente.setContato(contato);
-                
-                endereco.setRua(rs.getString("rua"));
-                endereco.setNumero(rs.getInt("numero"));
-                endereco.setBairro(rs.getString("bairro"));
-                endereco.setCep(rs.getString("cep"));
-                endereco.setCidade(rs.getString("cidade"));
-                endereco.setEstado(rs.getString("uf"));
-                cliente.setEndereco(endereco);
-                
-                clientes.add(cliente);
-            }
-        } 
-        catch (SQLException ex) 
-        {
-            Logger.getLogger(DAOCategoria.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return clientes;
+        connection = ConectaDB.getConexao();
     }
     
-    public static boolean salvar (Cliente cliente)
+    @Override
+    public boolean save (Cliente cliente)
     {
         try 
         {
-            Connection connection = ConectaDB.getConexao();
-            String sql = "insert into cliente" +
-                        "(nome, cpf, fone, email, rua, numero, bairro, cep, cidade, uf)" +
-                        "values(?,?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into cliente"
+                    + " (nome, cpf, fone, email, rua, numero, bairro, cep, cidade, uf)"
+                    + " values(?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement statement = connection.prepareStatement(sql);
             
             statement.setString(1, cliente.getNome());
@@ -92,12 +45,79 @@ public class DAOCliente
             statement.setString(10, cliente.getEndereco().getEstado());
             
             statement.execute();
-        } catch (SQLException ex)
+        } 
+        catch (SQLException ex)
         {
             System.out.println(ex.getMessage());
             return false;
         }
         
         return true;
+    }
+
+    @Override
+    public List<Cliente> findAll()
+    {
+        String sql = "select * from cliente";
+        return getDataFromDb(sql);
+    }
+
+    @Override
+    public List<Cliente> findByILike(FiltroCliente filter)
+    {
+        String sql = "select * from cliente"
+                + " where nome ILIKE '%" + filter.getNome()+ "%'"
+                + " and cpf ILIKE '%" + filter.getCpf() + "%'"
+                + " and fone LIKE '%" + filter.getFiltroContato().getFone() + "%'"
+                + " and email ILIKE '%" + filter.getFiltroContato().getEmail()+ "%'"
+                + " and rua ILIKE '%" + filter.getFiltroEndereco().getRua() + "%'"
+                + " and bairro ILIKE '%" + filter.getFiltroEndereco().getBairro() + "%'"
+                + " and cep LIKE '%" + filter.getFiltroEndereco().getCep() + "%'"
+                + " and cidade ILIKE '%" + filter.getFiltroEndereco().getCidade() + "%'";
+
+        if (!filter.getFiltroEndereco().getEstado().isEmpty())
+            sql += " and uf = '" + filter.getFiltroEndereco().getEstado() + "'";
+        
+        return getDataFromDb(sql);
+    }
+
+    @Override
+    public List<Cliente> getDataFromDb(String sql) 
+    {
+        List<Cliente> clientes = new ArrayList<>();
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet rs;
+            rs = statement.executeQuery();
+            while (rs.next())
+            {
+                Cliente cliente = new Cliente(rs.getInt("id"));
+                Endereco endereco = new Endereco();
+                Contato contato = new Contato();
+
+                cliente.setNome(rs.getString("nome"));
+                cliente.setCpf(rs.getString("cpf"));
+
+                contato.setFone(rs.getString("fone"));
+                contato.setEmail(rs.getString("email"));
+                cliente.setContato(contato);
+
+                endereco.setRua(rs.getString("rua"));
+                endereco.setNumero(rs.getInt("numero"));
+                endereco.setBairro(rs.getString("bairro"));
+                endereco.setCep(rs.getString("cep"));
+                endereco.setCidade(rs.getString("cidade"));
+                endereco.setEstado(rs.getString("uf"));
+                cliente.setEndereco(endereco);
+
+                clientes.add(cliente);
+            }
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(DAOCategoria.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return clientes; 
     }
 }

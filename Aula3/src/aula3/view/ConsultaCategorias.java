@@ -5,9 +5,14 @@ import aula3.models.DAOCategoria;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
-public class ConsultaCategoria extends javax.swing.JFrame {
+public class ConsultaCategorias extends javax.swing.JFrame 
+{
+    DAOCategoria dao;
+    private static ConsultaCategorias instance = null;
 
-    public ConsultaCategoria() {
+    public ConsultaCategorias() 
+    {
+        dao = new DAOCategoria();
         initComponents();
     }
 
@@ -119,11 +124,7 @@ public class ConsultaCategoria extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jbPesquisarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -136,22 +137,31 @@ public class ConsultaCategoria extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ConsultaCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultaCategorias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ConsultaCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultaCategorias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ConsultaCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultaCategorias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ConsultaCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultaCategorias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ConsultaCategoria().setVisible(true);
+            public void run() 
+            {
+                ConsultaCategorias.getInstance().setVisible(true);
             }
         });
+    }
+    
+    public static ConsultaCategorias getInstance()
+    {
+        if(instance == null)
+            instance =  new ConsultaCategorias();  
+
+        return instance;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

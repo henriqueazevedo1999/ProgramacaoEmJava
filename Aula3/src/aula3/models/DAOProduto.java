@@ -12,28 +12,68 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class DAOProduto
+public class DAOProduto implements IDAO<Produto, FiltroProduto>
 {
-    public static List<Produto> getProdutos(FiltroProduto filtroProduto)
+    Connection connection;
+
+    public DAOProduto() 
+    {
+       connection = ConectaDB.getConexao(); 
+    }
+    
+    @Override
+    public boolean save(Produto produto) 
+    {
+        try 
+        {
+            String sql = "insert into produto" +
+                        " (descricao, preco, estoque, idcategoria)" +
+                        " values(?,?,?,?)";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            
+            statement.setString(1, produto.getDescricao());
+            statement.setFloat(2, produto.getPreco());
+            statement.setFloat(3, produto.getEstoque());
+            statement.setInt(4, produto.getCategoria().getId());
+            
+            statement.execute();
+        } catch (SQLException ex)
+        {
+            System.out.println(ex.getMessage());
+            return false;
+        }
+        
+        return true;
+    }
+
+    @Override
+    public List<Produto> findAll() 
+    {
+        String sql;
+        sql = "select * from produto";
+        return getDataFromDb(sql);
+    }
+
+    @Override
+    public List<Produto> findByILike(FiltroProduto filter) 
+    {
+        String sql;
+        sql = "select * from produto"
+            + " where descricao ILIKE '%" + filter.getDescricao() + "%'";
+        
+        if (filter.getCategoria() != null)
+            sql += " and idcategoria = '" + filter.getCategoria().getId() + "'";
+        
+        return getDataFromDb(sql);
+    }
+
+    @Override
+    public List<Produto> getDataFromDb(String sql) 
     {
         List<Produto> produtos = new ArrayList<>();
         ResultSet rs = null;
         try 
         {
-            String sql;
-            Connection connection = ConectaDB.getConexao();
-            if (filtroProduto.getCategoria() == null)
-            {
-                sql = "select * from produto "
-                    + "where descricao ILIKE '%" + filtroProduto.getDescricao() + "%'";
-            }
-            else
-            {
-                sql = "select * from produto "
-                    + "where descricao ILIKE '%" + filtroProduto.getDescricao() + "%'"
-                    + "and idcategoria ILIKE '%" + filtroProduto.getCategoria().getId() + "%'";
-            }
-            
             PreparedStatement statement = connection.prepareStatement(sql);
             rs = statement.executeQuery();
             
@@ -56,30 +96,5 @@ public class DAOProduto
             Logger.getLogger(DAOCategoria.class.getName()).log(Level.SEVERE, null, ex);
         }
         return produtos;
-    }
-    
-    public static boolean salvar (Produto produto)
-    {
-        try 
-        {
-            Connection connection = ConectaDB.getConexao();
-            String sql = "insert into produto" +
-                        "(descricao, preco, estoque, idcategoria)" +
-                        "values(?,?,?,?)";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            
-            statement.setString(1, produto.getDescricao());
-            statement.setFloat(2, produto.getPreco());
-            statement.setFloat(3, produto.getEstoque());
-            statement.setInt(4, produto.getCategoria().getId());
-            
-            statement.execute();
-        } catch (SQLException ex)
-        {
-            System.out.println(ex.getMessage());
-            return false;
-        }
-        
-        return true;
     }
 }
