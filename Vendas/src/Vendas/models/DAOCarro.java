@@ -1,8 +1,9 @@
-package aula3.models;
+package Vendas.models;
 
-import aula3.controller.Carro;
-import aula3.controller.FiltroCarro;
-import aula3.utils.ConectaDB;
+import Vendas.utils.IDAO;
+import Vendas.controller.Carro;
+import Vendas.controller.FiltroCarro;
+import Vendas.utils.ConectaDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,7 +23,7 @@ public class DAOCarro implements IDAO<Carro, FiltroCarro>
     }
     
     @Override
-    public boolean save(Carro carro) 
+    public boolean insert(Carro carro) 
     {
         try 
         {
@@ -49,7 +50,7 @@ public class DAOCarro implements IDAO<Carro, FiltroCarro>
     }
 
     @Override
-    public List<Carro> findAll() 
+    public List<Carro> getAll() 
     {
         String sql = "select * from carro";
         return getDataFromDb(sql);
@@ -65,6 +66,13 @@ public class DAOCarro implements IDAO<Carro, FiltroCarro>
                 + " and cor ILIKE '%" + filter.getCor() + "%'";
 
         return getDataFromDb(sql);
+    }
+
+    @Override
+    public Carro getById(int id)
+    {
+        String sql = "select * from carro where id = '" + id + "'";
+        return getDataFromDb(sql).get(0);
     }
 
     @Override
@@ -90,9 +98,52 @@ public class DAOCarro implements IDAO<Carro, FiltroCarro>
         } 
         catch (SQLException ex) 
         {
-            Logger.getLogger(DAOCategoria.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
         }
         
         return carros; 
+    }
+
+    @Override
+    public boolean update(Carro carro)
+    {
+        try 
+        {
+            String sql = "update carro"
+                    + " set marca = ?, modelo = ?, placa = ?, cor = ?, capacidade_tanque = ?"
+                    + " where id = '" + carro.getId() + "'";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            
+            preparedStatement.setString(1, carro.getMarca());
+            preparedStatement.setString(2, carro.getModelo());
+            preparedStatement.setString(3, carro.getPlaca());
+            preparedStatement.setString(4, carro.getCor());
+            preparedStatement.setInt(5, carro.getCapacidadeTanque());
+            
+            preparedStatement.execute();
+        }
+        catch (SQLException ex)
+        {
+            System.out.println(ex.getMessage());
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean delete(int id)
+    {
+        try 
+        {
+            String sql = "delete from carro where id = '" + id + "'";
+            connection.prepareStatement(sql).execute();
+        }
+        catch (SQLException ex)
+        {
+            System.out.println(ex.getMessage());
+            return false;
+        }
+        return true;
     }
 }

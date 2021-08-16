@@ -1,4 +1,4 @@
-package aula3.view;
+package Vendas.view;
 
 public interface ICadastro<T> 
 {

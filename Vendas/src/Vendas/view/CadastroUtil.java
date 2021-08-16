@@ -1,6 +1,6 @@
-package aula3.view;
+package Vendas.view;
 
-import aula3.utils.ValidaCpfCnpj;
+import Vendas.utils.ValidaCpfCnpj;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;

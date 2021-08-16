@@ -1,16 +1,33 @@
-package aula3.controller;
+package Vendas.controller;
 
-public class FiltroCarro
+public class Carro
 {
+    private int id;
     private String marca;
     private String modelo;
     private String placa;
     private String cor;
+    private int capacidadeTanque;
 
-    public FiltroCarro()
+    public Carro()
     {
     }
     
+    public Carro(int id)
+    {
+        setId(id);
+    }
+    
+    public int getId() 
+    {
+        return id;
+    }
+
+    public void setId(int id) 
+    {
+        this.id = id;
+    }
+
     public String getMarca()
     {
         return marca;
@@ -49,5 +66,15 @@ public class FiltroCarro
     public void setCor(String cor) 
     {
         this.cor = cor;
+    }
+
+    public int getCapacidadeTanque()
+    {
+        return capacidadeTanque;
+    }
+
+    public void setCapacidadeTanque(int capacidadeTanque) 
+    {
+        this.capacidadeTanque = capacidadeTanque;
     }
 }
