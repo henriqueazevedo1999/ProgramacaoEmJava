@@ -9,9 +9,9 @@ public class ConectaDB
     public static Connection getConexao()
     {
         Connection connection = null;
-        String url = "jdbc:postgresql://localhost:5432/aulajava";
+        String url = "jdbc:postgresql://localhost:5432/postgres";
         String user = "postgres";
-        String password = "admin";
+        String password = "123";
         try 
         {
             Class.forName("org.postgresql.Driver");

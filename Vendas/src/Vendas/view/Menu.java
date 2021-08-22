@@ -1,20 +1,7 @@
-//pattern strategy
-//pattern factory
-//implementar classe controller
-
 package Vendas.view;
 
 public class Menu extends javax.swing.JFrame {
 
-    CadastroProduto cadastroProduto;
-    CadastroCategoria cadastroCategoria;
-    CadastroCliente cadastroCliente;
-    CadastroCarro cadastroCarro;
-    ConsultaProdutos consultaProdutos;
-    ConsultaClientes consultaClientes;
-    ConsultaCategorias consultaCategorias;
-    ConsultaCarros consultaCarros;
-    
     public Menu() 
     {
         initComponents();
@@ -32,6 +19,7 @@ public class Menu extends javax.swing.JFrame {
         jCadastroCategoria = new javax.swing.JMenuItem();
         jCadastroCliente = new javax.swing.JMenuItem();
         jCadastroCarro = new javax.swing.JMenuItem();
+        jCadastroVenda = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jCadastroSair = new javax.swing.JMenuItem();
         jConsultas = new javax.swing.JMenu();
@@ -39,6 +27,7 @@ public class Menu extends javax.swing.JFrame {
         jConsultaCategoria = new javax.swing.JMenuItem();
         jConsultaCliente = new javax.swing.JMenuItem();
         jConsultaCarro = new javax.swing.JMenuItem();
+        jConsultaVenda = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jConsultaSair = new javax.swing.JMenuItem();
         jSair = new javax.swing.JMenu();
@@ -83,6 +72,14 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jCadastros.add(jCadastroCarro);
+
+        jCadastroVenda.setText("Venda");
+        jCadastroVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCadastroVendaActionPerformed(evt);
+            }
+        });
+        jCadastros.add(jCadastroVenda);
         jCadastros.add(jSeparator1);
 
         jCadastroSair.setText("Sair");
@@ -123,6 +120,9 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jConsultas.add(jConsultaCarro);
+
+        jConsultaVenda.setText("Venda");
+        jConsultas.add(jConsultaVenda);
         jConsultas.add(jSeparator2);
 
         jConsultaSair.setText("Sair");
@@ -181,6 +181,10 @@ public class Menu extends javax.swing.JFrame {
         ConsultaCarros.getInstance().setVisible(true);
     }//GEN-LAST:event_jConsultaCarroActionPerformed
 
+    private void jCadastroVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastroVendaActionPerformed
+        CadastroVendas.getInstance().setVisible(true);
+    }//GEN-LAST:event_jCadastroVendaActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -196,12 +200,14 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jCadastroCliente;
     private javax.swing.JMenuItem jCadastroProduto;
     private javax.swing.JMenuItem jCadastroSair;
+    private javax.swing.JMenuItem jCadastroVenda;
     private javax.swing.JMenu jCadastros;
     private javax.swing.JMenuItem jConsultaCarro;
     private javax.swing.JMenuItem jConsultaCategoria;
     private javax.swing.JMenuItem jConsultaCliente;
     private javax.swing.JMenuItem jConsultaProduto;
     private javax.swing.JMenuItem jConsultaSair;
+    private javax.swing.JMenuItem jConsultaVenda;
     private javax.swing.JMenu jConsultas;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;

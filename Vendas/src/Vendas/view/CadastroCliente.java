@@ -6,7 +6,6 @@ import Vendas.controller.Endereco;
 import Vendas.controller.Estados;
 import Vendas.models.DAOCliente;
 import javax.swing.JOptionPane;
-import javax.swing.text.MaskFormatter;
 
 public class CadastroCliente extends javax.swing.JFrame implements ICadastro
 {
@@ -219,6 +218,7 @@ public class CadastroCliente extends javax.swing.JFrame implements ICadastro
             Contato contato = new Contato();
             
             cliente.setNome(jtNome.getText());
+            cliente.setCpf(jtCPF.getText());
             
             contato.setFone(jtFone.getText());
             contato.setEmail(jtEmail.getText());

@@ -216,23 +216,23 @@ public class CadastroProduto extends javax.swing.JFrame
     }//GEN-LAST:event_jbLimparActionPerformed
 
     private void jtIdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtIdFocusLost
-        if (!CadastroUtil.VerificaCampoInt(jtId))
-            return;
-        
-        int id = Integer.parseInt(jtId.getText());
-        if (id <= 0)
-            return;
-
-        Produto produto = dao.getById(id);
-
-        if (produto == null)
-            JOptionPane.showMessageDialog(rootPane, "Produto não existe"); 
-        else
-        {
-            PreencheCampos(produto);
-            habilitaBotaoAlterar(true);
-            return;
-        }
+//        if (!CadastroUtil.VerificaCampoInt(jtId))
+//            return;
+//        
+//        int id = Integer.parseInt(jtId.getText());
+//        if (id <= 0)
+//            return;
+//
+//        Produto produto = dao.getById(id);
+//
+//        if (produto == null)
+//            JOptionPane.showMessageDialog(rootPane, "Produto não existe"); 
+//        else
+//        {
+//            PreencheCampos(produto);
+//            habilitaBotaoAlterar(true);
+//            return;
+//        }
     }//GEN-LAST:event_jtIdFocusLost
 
     private void habilitaBotaoAlterar(boolean habilita)

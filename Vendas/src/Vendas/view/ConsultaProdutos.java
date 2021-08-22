@@ -4,7 +4,6 @@ import Vendas.controller.Categoria;
 import Vendas.controller.FiltroProduto;
 import Vendas.controller.Produto;
 import Vendas.models.DAOProduto;
-import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.table.DefaultTableModel;
@@ -16,6 +15,7 @@ public class ConsultaProdutos extends javax.swing.JDialog
     DAOProduto dao;
     private static ConsultaProdutos instance = null;
     private Produto produtoSelecionado;
+    public boolean fechaAoSelecionar = false;
     
     public ConsultaProdutos()
     {
@@ -27,7 +27,7 @@ public class ConsultaProdutos extends javax.swing.JDialog
         {
             public void mousePressed(MouseEvent mouseEvent) {
                 JTable table =(JTable) mouseEvent.getSource();
-                if (mouseEvent.getClickCount() == 2 && table.getSelectedRow() != -1)
+                if (mouseEvent.getClickCount() == 2 && table.getSelectedRow() != -1 && fechaAoSelecionar)
                 {
                     int linhaSelecionada = table.getSelectedRow();
                     produtoSelecionado = new Produto();
@@ -36,7 +36,7 @@ public class ConsultaProdutos extends javax.swing.JDialog
                     produtoSelecionado.setPreco(Float.parseFloat(table.getModel().getValueAt(linhaSelecionada, 2).toString()));
                     produtoSelecionado.setEstoque(Float.parseFloat(table.getModel().getValueAt(linhaSelecionada, 3).toString()));
                     produtoSelecionado.setCategoria(new Categoria(table.getModel().getValueAt(linhaSelecionada, 4).toString()));
-                    getInstance().setVisible(false);
+                    getInstance().dispose();
                 }
             }
         });

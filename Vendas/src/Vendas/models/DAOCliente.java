@@ -86,7 +86,11 @@ public class DAOCliente implements IDAO<Cliente, FiltroCliente>
     public Cliente getById(int id)
     {
         String sql = "select * from cliente where id = '" + id + "'";
-        return getDataFromDb(sql).get(0);
+        List<Cliente> listaClientes = getDataFromDb(sql);
+        if (listaClientes.size() > 0)
+            return listaClientes.get(0);
+        else
+            return null;
     }
 
     @Override
@@ -94,9 +98,8 @@ public class DAOCliente implements IDAO<Cliente, FiltroCliente>
     {
         List<Cliente> clientes = new ArrayList<>();
         try {
-            PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet rs;
-            rs = statement.executeQuery();
+            rs = connection.prepareStatement(sql).executeQuery();
             while (rs.next())
             {
                 Cliente cliente = new Cliente(rs.getInt("id"));

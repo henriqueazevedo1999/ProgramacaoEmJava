@@ -3,7 +3,6 @@ package Vendas.view;
 import Vendas.utils.ValidaCpfCnpj;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
-import javax.swing.text.MaskFormatter;
 
 public class CadastroUtil 
 {
