@@ -1,6 +1,8 @@
 package Vendas.view;
 
 import Vendas.controller.Cliente;
+import Vendas.controller.ItemPedido;
+import Vendas.controller.Pedido;
 import Vendas.controller.Produto;
 import Vendas.models.DAOCliente;
 import Vendas.models.DAOProduto;
@@ -8,6 +10,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 public class CadastroVendas extends javax.swing.JFrame {
 
@@ -15,6 +18,7 @@ public class CadastroVendas extends javax.swing.JFrame {
     DAOCliente daoCliente;
     private static CadastroVendas instance = null;
     private Produto produtoAtual;
+    private Pedido pedido = new Pedido();
     
     public CadastroVendas()
     {
@@ -147,6 +151,11 @@ public class CadastroVendas extends javax.swing.JFrame {
         jtTotal.setEditable(false);
 
         jbFinalizarPedido.setText("Finalizar Pedido");
+        jbFinalizarPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbFinalizarPedidoActionPerformed(evt);
+            }
+        });
 
         jbConsultaProduto.setText("...");
         jbConsultaProduto.addActionListener(new java.awt.event.ActionListener() {
@@ -325,7 +334,7 @@ public class CadastroVendas extends javax.swing.JFrame {
         return true;
     }
     
-        private boolean preencheInfosCliente(Cliente cliente)
+    private boolean preencheInfosCliente(Cliente cliente)
     {
         if (cliente == null)
             return false;
@@ -381,29 +390,76 @@ public class CadastroVendas extends javax.swing.JFrame {
         if (!verificaCamposProduto())
             return;
         
-        if (Float.parseFloat(jtQuantidade.getText()) > produtoAtual.getEstoque())
+        DefaultTableModel modelo = (DefaultTableModel)jTable1.getModel();
+        
+        float quantidadeEscolhida = Float.parseFloat(jtQuantidade.getText());
+        
+        ItemPedido itemPedido = new ItemPedido();
+        itemPedido.setProduto(produtoAtual);
+        
+        itemPedido.adicionaQuantidade(quantidadeEscolhida);
+        
+        int posicaoItem = getPosicaoItemTabela(itemPedido.getProduto().getId());
+        if (posicaoItem >= 0)
+        {
+            int opcaoEscolhida = JOptionPane.showConfirmDialog(this, "Esse produto já foi adicionado ao pedido.\nDeseja acrescentar à quantidade já adicionada?",
+                    "Produto já adicionado", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (opcaoEscolhida == 0)
+                itemPedido.adicionaQuantidade(Float.parseFloat(modelo.getValueAt(posicaoItem, 3).toString()));
+            else
+                return;
+        }
+        
+        if (!itemPedido.temEstoque())
         {
             JOptionPane.showMessageDialog(this, "Quantidade é superior ao estoque disponível.\nEstoque disponível: " + produtoAtual.getEstoque());
             jtQuantidade.requestFocus();
             return;
         }
         
-        float subtotalPedido = getSubtotal();
-        
-        DefaultTableModel modelo = (DefaultTableModel)jTable1.getModel();
-        modelo.addRow(new Object[]
+        if (posicaoItem >= 0)
         {
-            jtIdProduto.getText(),
-            jtDescricao.getText(),
-            jtPreco.getText(),
-            jtQuantidade.getText(),
-            subtotalPedido
-        });
+            modelo.setValueAt(itemPedido.getQuantidade(), posicaoItem, 3);
+            modelo.setValueAt(itemPedido.getTotal(), posicaoItem, 4);
+        }
+        else
+        {
+            modelo.addRow(new Object[]
+            {
+                itemPedido.getProduto().getId(),
+                itemPedido.getProduto().getDescricao(),
+                itemPedido.getProduto().getPreco(),
+                itemPedido.getQuantidade(),
+                itemPedido.getTotal()
+            });
+        }
         
-        adicionaTotalPedido(subtotalPedido);
+        adicionaTotalPedido(quantidadeEscolhida * itemPedido.getProduto().getPreco());
         
         limpaCamposProduto();
     }//GEN-LAST:event_jbAdicionaProdutoActionPerformed
+
+    private void jbFinalizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbFinalizarPedidoActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel)jTable1.getModel();
+        Pedido pedido = new Pedido();
+        
+        for (int idx = 0; idx < modelo.getRowCount(); idx++)
+        {
+            ItemPedido itemPedido = new ItemPedido();
+            Produto produto = new Produto();
+            
+            produto.setId(Integer.parseInt(modelo.getValueAt(idx, 0).toString()));
+            produto.setDescricao(modelo.getValueAt(idx, 1).toString());
+            produto.setPreco(Float.parseFloat(modelo.getValueAt(idx, 2).toString()));
+            
+            itemPedido.setProduto(produto);
+            itemPedido.adicionaQuantidade(Float.parseFloat(modelo.getValueAt(idx, 3).toString()));
+            
+            pedido.adicionaItem(itemPedido);
+        }
+        
+        
+    }//GEN-LAST:event_jbFinalizarPedidoActionPerformed
 
     private int getPosicaoItemTabela(int id)
     {
@@ -429,14 +485,6 @@ public class CadastroVendas extends javax.swing.JFrame {
         catch (NumberFormatException e){}
         
         jtTotal.setText(Float.toString(valorAtual + valor));
-    }
-    
-    private float getSubtotal()
-    {
-        float preco = Float.parseFloat(jtPreco.getText());
-        float quantidade = Float.parseFloat(jtQuantidade.getText());
-        
-        return preco * quantidade;
     }
     
     private boolean verificaCamposProduto()
