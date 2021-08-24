@@ -1,10 +1,13 @@
 package Vendas.controller;
 
+import java.util.Date;
 import java.util.List;
 
 public class Pedido 
 {
     private List<ItemPedido> itens;
+    private int idCliente;
+    private Date data;
     
     public void Pedido(){};
     
@@ -60,5 +63,30 @@ public class Pedido
         }
         
         return -1;
+    }
+
+    public int getIdCliente() 
+    {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente)
+    {
+        this.idCliente = idCliente;
+    }
+
+    public Date getData() 
+    {
+        return data;
+    }
+
+    public void setData(Date data) 
+    {
+        this.data = data;
+    }
+    
+    public int getQuantidadeItens()
+    {
+        return this.itens.size();
     }
 }

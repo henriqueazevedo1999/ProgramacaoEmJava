@@ -3,14 +3,15 @@ package Vendas.view;
 import Vendas.controller.Cliente;
 import Vendas.controller.ItemPedido;
 import Vendas.controller.Pedido;
+import Vendas.controller.PedidoTableModel;
 import Vendas.controller.Produto;
 import Vendas.models.DAOCliente;
 import Vendas.models.DAOProduto;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 public class CadastroVendas extends javax.swing.JFrame {
 
@@ -18,7 +19,7 @@ public class CadastroVendas extends javax.swing.JFrame {
     DAOCliente daoCliente;
     private static CadastroVendas instance = null;
     private Produto produtoAtual;
-    private Pedido pedido = new Pedido();
+    private PedidoTableModel modelo;
     
     public CadastroVendas()
     {
@@ -52,7 +53,7 @@ public class CadastroVendas extends javax.swing.JFrame {
         jbFinalizarPedido = new javax.swing.JButton();
         jbConsultaProduto = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable1 = new JTable(modelo);
         jtDescricao = new javax.swing.JTextField();
         jtPreco = new javax.swing.JTextField();
         jlDescricaoProduto = new javax.swing.JLabel();
@@ -164,22 +165,8 @@ public class CadastroVendas extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Codigo", "Descriçao", "R$ Unitário", "Quantidade", "Subtotal"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
+        modelo = new PedidoTableModel(new Pedido());
+        jTable1.setModel(modelo);
         jScrollPane1.setViewportView(jTable1);
 
         jtDescricao.setEditable(false);
@@ -390,7 +377,7 @@ public class CadastroVendas extends javax.swing.JFrame {
         if (!verificaCamposProduto())
             return;
         
-        DefaultTableModel modelo = (DefaultTableModel)jTable1.getModel();
+        PedidoTableModel modelo = (PedidoTableModel)jTable1.getModel();
         
         float quantidadeEscolhida = Float.parseFloat(jtQuantidade.getText());
         
@@ -399,14 +386,11 @@ public class CadastroVendas extends javax.swing.JFrame {
         
         itemPedido.adicionaQuantidade(quantidadeEscolhida);
         
-        int posicaoItem = getPosicaoItemTabela(itemPedido.getProduto().getId());
-        if (posicaoItem >= 0)
+        if (modelo.getPedido().possuiItemPedido(itemPedido.getProduto().getId()))
         {
             int opcaoEscolhida = JOptionPane.showConfirmDialog(this, "Esse produto já foi adicionado ao pedido.\nDeseja acrescentar à quantidade já adicionada?",
                     "Produto já adicionado", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-            if (opcaoEscolhida == 0)
-                itemPedido.adicionaQuantidade(Float.parseFloat(modelo.getValueAt(posicaoItem, 3).toString()));
-            else
+            if (opcaoEscolhida != 0)
                 return;
         }
         
@@ -417,24 +401,9 @@ public class CadastroVendas extends javax.swing.JFrame {
             return;
         }
         
-        if (posicaoItem >= 0)
-        {
-            modelo.setValueAt(itemPedido.getQuantidade(), posicaoItem, 3);
-            modelo.setValueAt(itemPedido.getTotal(), posicaoItem, 4);
-        }
-        else
-        {
-            modelo.addRow(new Object[]
-            {
-                itemPedido.getProduto().getId(),
-                itemPedido.getProduto().getDescricao(),
-                itemPedido.getProduto().getPreco(),
-                itemPedido.getQuantidade(),
-                itemPedido.getTotal()
-            });
-        }
+        modelo.addItemPedido(itemPedido);
         
-        adicionaTotalPedido(quantidadeEscolhida * itemPedido.getProduto().getPreco());
+        jtTotal.setText(Float.toString(modelo.getPedido().getTotal()));
         
         limpaCamposProduto();
     }//GEN-LAST:event_jbAdicionaProdutoActionPerformed
@@ -457,35 +426,7 @@ public class CadastroVendas extends javax.swing.JFrame {
             
             pedido.adicionaItem(itemPedido);
         }
-        
-        
     }//GEN-LAST:event_jbFinalizarPedidoActionPerformed
-
-    private int getPosicaoItemTabela(int id)
-    {
-        DefaultTableModel modelo = (DefaultTableModel)jTable1.getModel();
-        
-        for (int idx = 0; idx < modelo.getRowCount(); idx++)
-        {
-            if (Integer.parseInt(modelo.getValueAt(idx, 0).toString()) == id)
-                return idx;
-        }
-        
-        return -1;
-    }
-    
-    private void adicionaTotalPedido(float valor)
-    {
-        float valorAtual = 0;
-        
-        try 
-        {
-            valorAtual = Float.parseFloat(jtTotal.getText());
-        } 
-        catch (NumberFormatException e){}
-        
-        jtTotal.setText(Float.toString(valorAtual + valor));
-    }
     
     private boolean verificaCamposProduto()
     {

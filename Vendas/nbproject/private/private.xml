@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Henrique/Documents/NetBeansProjects/ProgramacaoEmJava/Vendas/src/Vendas/models/DAOCliente.java</file>
+            <file>file:/C:/Users/Henrique/Documents/NetBeansProjects/ProgramacaoEmJava/Vendas/src/Vendas/controller/Pedido.java</file>
+            <file>file:/C:/Users/Henrique/Documents/NetBeansProjects/ProgramacaoEmJava/Vendas/src/Vendas/view/CadastroVendas.java</file>
+            <file>file:/C:/Users/Henrique/Documents/NetBeansProjects/ProgramacaoEmJava/Vendas/src/Vendas/utils/ConectaDB.java</file>
+            <file>file:/C:/Users/Henrique/Documents/NetBeansProjects/ProgramacaoEmJava/Vendas/src/Vendas/controller/ItemPedido.java</file>
+            <file>file:/C:/Users/Henrique/Documents/NetBeansProjects/ProgramacaoEmJava/Vendas/src/Vendas/view/CadastroCliente.java</file>
+        </group>
     </open-files>
 </project-private>
